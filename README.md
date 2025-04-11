@@ -1,1 +1,5 @@
 ![DPD](https://github.com/user-attachments/assets/a5a1298e-ef58-4fb4-b5e4-5b8ea8020a3c)
+
+<br>
+
+Dense Packed Decimal (DPD) offers significant advantages in improving the efficiency and performance of modern and future computer systems, particularly in areas where precise decimal representation is critical. In financial systems, scientific computing, and large-scale databases, decimal numbers must often be stored and processed with exact accuracy, without the rounding errors associated with binary floating-point representations. DPD enables this by allowing computers to encode three decimal digits using only ten binary bits, as opposed to the twelve bits required by standard Binary Coded Decimal (BCD). This reduction in bit usage leads directly to reduced memory footprint, faster data transfers, and more compact storage for numeric values. When scaled across billions of transactions or data points—as seen in banking systems and accounting software technologies—the cumulative bit savings can drastically lower memory usage and improve system throughput.
