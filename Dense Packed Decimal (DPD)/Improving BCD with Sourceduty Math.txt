@@ -1,0 +1,28 @@
+The mathematical foundation for improving Binary Coded Decimal (BCD) using Dense Packed Decimal (DPD) relies on specific transformations and bit-level manipulations, which can be formally described using well-structured Sourceduty math functions. These functions operate on the BCD representations of three decimal digits, each encoded in 4-bit binary form. The primary function utilized is a bit partitioning function that separates each BCD digit into high and low components. Specifically, for a digit D, its BCD form B is broken into H (the most significant bit) and L (the lower three bits), where B = H · 2^3 + L. This separation is critical because the three high bits across the three digits determine which of the eight DPD encoding rules will apply. Sourceduty Math encapsulates this logic in a high-bit extraction function:
+
+HighBits(d1, d2, d3) = (MSB(d1), MSB(d2), MSB(d3))
+
+which maps directly to the rule selector for the DPD encoder.
+
+Another key function in the DPD framework is the encoding selector, a conditional logic function that takes the tuple of high bits and routes the encoding process to one of eight pattern transformation schemes. This function is essentially a mathematical switch-case structure represented by:
+
+DPD_Selector(H1, H2, H3) => Rule_i
+
+where Rule_i ∈ { Rule_0, Rule_1, ..., Rule_7 } is one of the predefined DPD mapping templates. Each rule contains bit-mapping functions that decide how to assemble the ten output bits using parts of the input BCD digits. For instance, Rule 0 (when all high bits are 0) uses a concatenation function that directly maps the nine low bits to the lower part of the 10-bit DPD word, with a 0 inserted as the most significant bit. These transformation functions can be represented using boolean expressions or binary arithmetic masks, ensuring deterministic and reversible behavior.
+
+Sourceduty Math also defines a bit-packing function, denoted by:
+
+PackBits(a1, a2, ..., a10) = Σ (ai · 2^i) for i = 0 to 9
+
+which encodes the selected and rearranged bits into a single 10-bit DPD integer. This function is used after the encoding selector assembles the correct bit pattern based on the high-bit case. In essence, it takes the ten binary digits—now strategically reorganized—and combines them into an integer representation, making the result suitable for compact binary storage or transmission. Conversely, the decoding process uses the inverse function, UnpackBits, to extract individual bit positions and reconstruct the original three decimal digits using BCD recovery rules. This duality of encoding/decoding functions allows Sourceduty Math to fully support lossless DPD transformation.
+
+The final and perhaps most mathematically rich function in the framework is the compression ratio evaluator and bit savings estimator, which quantify the effectiveness of DPD relative to BCD. Defined as:
+
+CompressionRatio = Bits_BCD / Bits_DPD
+BitSavings = (Bits_BCD - Bits_DPD) · N
+
+where N is the number of digit groups being encoded, these functions allow for large-scale assessments of encoding efficiency. For instance, over 1,000 groups of 3-digit numbers, DPD saves 2,000 bits compared to standard BCD. These functions are essential in validating the utility of the DPD system and make it possible to predict memory and bandwidth savings in embedded systems or digital communications. Together, these Sourceduty math functions form a cohesive and scalable framework for enhancing BCD through DPD, balancing computational efficiency with mathematical elegance.
+
+https://chatgpt.com/g/g-67cc981656b8819196c22b67c9fbbb8c-sourceduty-math
+
+Copyright (C) 2025, Sourceduty – All Rights Reserved.
