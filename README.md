@@ -7,6 +7,7 @@ Dense Packed Decimal (DPD) offers significant advantages in improving the effici
 #
 
 ![DPD](https://github.com/user-attachments/assets/a5a1298e-ef58-4fb4-b5e4-5b8ea8020a3c)
+
 [Dense Packed Decimal](https://chatgpt.com/g/g-67f942074b1c8191be0d7a8838ccc0f4-dense-packed-decimal)
 
 #
